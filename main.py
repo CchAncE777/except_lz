@@ -1,17 +1,12 @@
-import pandas as pd
+from excep import Check
 
-file_1 = 'var3.csv'
-file_2 = 'var_stolb_3.csv'
-file_pd_1= pd.read_csv(file_1)
-file_pd_2 = pd.read_csv(file_2)
-colums_1 = file_pd_1.columns
-colums_2 = file_pd_2.columns
-odinakovie_ctolbci = colums_1.intersection(colums_2)
+def main(): 
+    file_1 = input('Введите имя первого файла cо значением(Ожидаемого): ')
+    file_2 = input('Введите имя второго файла со значением(Фактического): ')
+    C = Check(file_1, file_2)
+    C.errors_pd()
 
-print(odinakovie_ctolbci)
-
-for colums in odinakovie_ctolbci:
-    if file_pd_1[colums].dtype != file_pd_2[colums].dtype:
-        print(f"Столбец '{colums}': df1={file_pd_1[colums].dtype}, df2={file_pd_2[colums].dtype}")
+if __name__ == '__main__':
+    main()
 
 
